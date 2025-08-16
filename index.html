@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Solitaire</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background Audio (assets required with these names) -->
+  <audio id="bg-music" src="8-bit-retro-game-music-233964.mp3" loop preload="auto"></audio>
+  <audio id="card-sound" src="card-sounds-35956.mp3" preload="auto"></audio>
+  <audio id="button-sound" src="assets/button-sound.mp3" preload="auto"></audio>
+
+  <!-- Main Container -->
+  <div id="game-container">
+    <!-- Main Menu -->
+    <div id="main-menu" class="screen">
+      <div class="menu-content">
+        <h1 class="game-title">PIXEL SOLITAIRE</h1>
+        <div class="menu-buttons">
+          <button id="play-btn" class="pixel-btn primary">PLAY GAME</button>
+          <button id="settings-btn" class="pixel-btn">SETTINGS</button>
+          <button id="rules-btn" class="pixel-btn">RULES</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div id="settings-screen" class="screen hidden">
+      <div class="settings-content">
+        <h2 class="settings-title">SETTINGS</h2>
+        <div class="setting-group">
+          <label for="music-volume">Music Volume</label>
+          <input type="range" id="music-volume" min="0" max="1" step="0.01" value="0.7" class="pixel-slider" />
+          <span id="music-value">70%</span>
+        </div>
+        <div class="setting-group">
+          <label for="sfx-volume">Sound Effects</label>
+          <input type="range" id="sfx-volume" min="0" max="1" step="0.01" value="0.8" class="pixel-slider" />
+          <span id="sfx-value">80%</span>
+        </div>
+        <div class="setting-group">
+          <label>Card Back Style</label>
+          <div class="card-back-options">
+            <div class="card-back-option active" data-style="classic">
+              <div class="card-preview classic"></div>
+              <span>Classic</span>
+            </div>
+            <div class="card-back-option" data-style="pixel">
+              <div class="card-preview pixel"></div>
+              <span>Pixel</span>
+            </div>
+            <div class="card-back-option" data-style="retro">
+              <div class="card-preview retro"></div>
+              <span>Retro</span>
+            </div>
+          </div>
+        </div>
+        <button id="back-to-menu" class="pixel-btn">BACK TO MENU</button>
+      </div>
+    </div>
+
+    <!-- Rules Screen -->
+    <div id="rules-screen" class="screen hidden">
+      <div class="rules-content">
+        <h2 class="rules-title">HOW TO PLAY</h2>
+        <div class="rules-text">
+          <p><strong>OBJECTIVE:</strong> Move all cards to foundation piles by suit from Ace to King.</p>
+          <p><strong>TABLEAU:</strong> Build down in alternating colors (red on black, black on red).</p>
+          <p><strong>FOUNDATIONS:</strong> Build up by suit starting with Aces.</p>
+          <p><strong>STOCK:</strong> Draw cards from the deck when no moves are available.</p>
+          <p><strong>WINNING:</strong> Complete all four foundation piles to win!</p>
+        </div>
+        <button id="rules-back" class="pixel-btn">BACK TO MENU</button>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+      <div class="game-header">
+        <div class="game-controls">
+          <button id="new-game-btn" class="pixel-btn small">NEW GAME</button>
+          
+          <button id="menu-btn" class="pixel-btn small">MENU</button>
+        </div>
+        <div class="game-stats">
+          <span>Score: <span id="score">0</span></span>
+          <span>Time: <span id="timer">00:00</span></span>
+          <span>Moves: <span id="moves">0</span></span>
+        </div>
+      </div>
+      <div class="game-board">
+        <!-- Foundations -->
+        <div class="foundations">
+          <div class="foundation" data-suit="hearts" id="foundation-hearts"></div>
+          <div class="foundation" data-suit="diamonds" id="foundation-diamonds"></div>
+          <div class="foundation" data-suit="clubs" id="foundation-clubs"></div>
+          <div class="foundation" data-suit="spades" id="foundation-spades"></div>
+        </div>
+        <!-- Stock and Waste -->
+        <div class="stock-area">
+          <div id="stock" class="card-pile"></div>
+          <div id="waste" class="card-pile"></div>
+        </div>
+        <!-- Tableau -->
+        <div class="tableau">
+          <div class="tableau-column" data-column="0"></div>
+          <div class="tableau-column" data-column="1"></div>
+          <div class="tableau-column" data-column="2"></div>
+          <div class="tableau-column" data-column="3"></div>
+          <div class="tableau-column" data-column="4"></div>
+          <div class="tableau-column" data-column="5"></div>
+          <div class="tableau-column" data-column="6"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Win Screen -->
+    <div id="win-screen" class="screen hidden">
+      <div class="win-content">
+        <h2 class="win-title">CONGRATULATIONS!</h2>
+        <div class="win-stats">
+          <p>Final Score: <span id="final-score">0</span></p>
+          <p>Time: <span id="final-time">00:00</span></p>
+          <p>Moves: <span id="final-moves">0</span></p>
+        </div>
+        <div class="win-buttons">
+          <button id="play-again-btn" class="pixel-btn primary">PLAY AGAIN</button>
+          <button id="win-menu-btn" class="pixel-btn">MAIN MENU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
