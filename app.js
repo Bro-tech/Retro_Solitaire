@@ -29,11 +29,6 @@ class PixelSolitaire {
         // Show main menu on load
         this.showMenu();
 
-        // Optionally load save if you want "Continue" feature
-        // Uncomment below if you want to auto-load only if a save exists
-        // if (localStorage.getItem('pixelSolitaireSave')) {
-        //     this.loadFromLocalStorage();
-        // }
     }
 
     // --- SETUP & UI ---
@@ -66,7 +61,7 @@ class PixelSolitaire {
             this.drawFromStock();
         });
 
-        // Optional: hint/undo buttons if present in DOM!
+    
         safe('undo-btn') && safe('undo-btn').addEventListener('click', ()=> this.undoMove());
         safe('hint-btn') && safe('hint-btn').addEventListener('click', ()=> this.showHint());
 
@@ -74,7 +69,7 @@ class PixelSolitaire {
         const musicSlider = safe('music-volume');
         const sfxSlider = safe('sfx-volume');
 
-        // 💡 Initialize with current values & keep in sync
+        // 💡 Initializes with current values & keep in sync
         if (musicSlider) {
             musicSlider.value = this.bgMusic.volume = musicSlider.value || 0.7;
             musicSlider.addEventListener('input', e => {
@@ -231,7 +226,7 @@ class PixelSolitaire {
 
     // --- UI STATE ---
     updateDisplay() {
-        // Show the right screen, hide others
+      
         ['main-menu','settings-screen','rules-screen','game-screen','win-screen'].forEach(id=>{
             const el = document.getElementById(id);
             if(!el) return;
