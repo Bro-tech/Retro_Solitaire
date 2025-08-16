@@ -623,10 +623,10 @@ body::before {
     position: relative;
 }
 
-/* Remove duplicate win-content animation here to avoid overwriting */
+
 .win-content {
     /* styles... */
-    /* Removed animation from here to move it below */
+
 }
 
 /* Animations moved to end */
