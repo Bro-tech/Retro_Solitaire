@@ -1,4 +1,4 @@
-// Pixel Solitaire Game CORE
+// Pixel Solitaire Game 
 class PixelSolitaire {
     constructor() {
         // Basic state
